@@ -1,0 +1,122 @@
+<odoo>
+  <data>
+    <!-- compagne list tree view  -->
+
+    <record model="ir.ui.view" id="compagne.list">
+      <field name="name">compagne list</field>
+      <field name="model">compagne.compagne</field>
+      <field name="type">form</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+              <div class="oe_title">
+                  <h1>
+                      <field name="name" placeholder="Nom"/>
+                      <field name="partner_id"/>
+
+                  </h1>
+              </div>
+              <group>
+                  <group>
+                      <field name="date"/>
+                      <field name="user_id"/>
+                  </group>
+                   <group>
+                      <field name="project_id"/>
+                      <field name="opportunite_id"/>
+                      <field name="statut"/>
+                  </group>
+              </group>
+              <group>
+                  <group>
+                      <field name="ville" placeholder="Ville"/>
+                      <field name="departement"/>
+                      <field name="code_postal"/>
+                  </group>
+              </group>
+              <group>
+                  <field name="description" placeholder="Description"/>
+              </group>
+              <notebook colspan="4">
+                    <page string="Infos supplémentaires" autofocus="autofocus"> </page>
+                    <page string="Autre" autofocus="autofocus"> </page>
+              </notebook>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- compagne list tree view  -->
+
+    <record model="ir.ui.view" id="compagne.list_form_view">
+      <field name="name">compagne list</field>
+      <field name="model">compagne.compagne</field>
+      <field name="arch" type="xml">
+        <tree>
+            <field name="date"/>
+            <field name="name"/>
+            <field name="user_id"/>
+            <field name="project_id"/>
+            <field name="statut"/>
+            <field name="partner_id"/>
+            <field name="ville" placeholder="Ville"/>
+            <field name="departement"/>
+            <field name="code_postal"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- actions opening view compagne_list_contact -->
+
+    <record model="ir.actions.act_window" id="compagne.action_list_contact">
+      <field name="name">liste contacts</field>
+      <field name="res_model">res.partner</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+        <!-- actions opening views compagne_list (form, tree)-->
+
+    <record model="ir.actions.act_window" id="compagne.action_window">
+      <field name="name">compagne</field>
+      <field name="res_model">compagne.compagne</field>
+      <field name="view_mode">tree,form</field>
+      <!--field name="view_id" ref="compagne.list"/-->
+    </record>
+
+
+
+
+    <!-- server action to the one above -->
+    <!--
+    <record model="ir.actions.server" id="compagne.action_server">
+      <field name="name">compagne server</field>
+      <field name="model_id" ref="model_compagne_compagne"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+      </field>
+    </record>
+    -->
+
+    <!-- Top menu item "compagne"-->
+
+    <menuitem name="compagne" id="compagne.menu_root" sequence="2" parent="project.menu_main_pm"/>
+
+
+    <!-- sous_menus -->
+    <menuitem name="liste contacts" id="compagne_liste" parent="compagne.menu_root" sequence="1"/>
+    <menuitem name="les compagnes" id="compagne_liste_1" parent="compagne.menu_root" sequence="2"/>
+
+        <!-- actions -->
+        <!--
+        <menuitem name="List" id="compagne.menu_1_list" parent="compagne.menu_1"
+                  action="compagne.action_window"/>
+        <menuitem name="Server to list" id="compagne" parent="compagne.menu_2"
+                  action="compagne.action_server"/>
+        -->
+  </data>
+</odoo>

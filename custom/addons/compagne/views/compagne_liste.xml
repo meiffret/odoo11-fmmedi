@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+		<record model="ir.ui.view" id="compagne_liste_wizard">
+			<field name="name">compagne_liste.wizard</field>
+			<field name="model">compagne.liste</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Informations de la comagne">
+					<group>
+						<field name="date" string="Date"/>
+                        <field name="name" string="name"/>
+                        <field name="user_id" string="Responsable"/>
+                        <field name="project_id" string="Projet"/>
+                        <field name="statut" string="Statut" invisible="1" default="Sans retour"/>
+						<footer>
+	                    	<button name="new_compagne_contact_list" string="Valider" type="object" class="oe_highlight"/>
+	                    	or
+	                    	<button string="Cancel" class="oe_link" special="cancel" />
+                		</footer>
+                	</group>
+				</form>
+			</field>
+		</record>
+
+
+
+        <act_window name="Créer une compagne"
+            res_model="compagne.liste"
+            src_model="res.partner"
+            view_mode="form"
+            target="new"
+            multi="True"
+            key2="client_action_multi"
+            id="create_compagne_action"/>
+
+    </data>
+</odoo>

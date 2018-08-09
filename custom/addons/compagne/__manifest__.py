@@ -20,14 +20,17 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base'],
+    'depends': ['base','crm'],
 
     # always loaded
     'data': [
         # 'security/ir.model.access.csv',
         'views/views.xml',
         'views/templates.xml',
-        'views/compagne_liste.xml'
+        'views/compagne_liste_wizard.xml',
+        'views/res_partner_view.xml',
+        'views/warning_wizard.xml',
+        'views/crm_lead_view.xml'
     ],
     # only loaded in demonstration mode
     'demo': [

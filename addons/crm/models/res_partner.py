@@ -35,3 +35,4 @@ class Partner(models.Model):
             'default_partner_ids': partner_ids,
         }
         return action
+

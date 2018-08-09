@@ -1,6 +1,9 @@
 <?xml version="1.0"?>
 <odoo>
 
+             <!-- partner inherited form -->
+
+
         <!-- open meetings related to given partner -->
         <record id="calendar_event_partner" model="ir.actions.act_window">
             <field name="name">Meetings</field>

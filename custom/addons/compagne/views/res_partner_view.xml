@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- partner inherited form -->
+    <data>
+            <record id="view_partner_historic_campagne" model="ir.ui.view">
+                <field name="name">view.res.partner.form.inherited</field>
+                <field name="model">res.partner</field>
+                <field name="inherit_id" ref="base.view_partner_form"/>
+                <field name="priority" eval="50"/>
+                <field name="arch" type="xml">
+                    <xpath expr="//form/sheet/notebook/page[2]" position="after">
+                        <page name="historique" string="Historique du contact">
+                            <field name="historique"/>
+                            <field name="compagne_id"/>
+                        </page>
+                    </xpath>
+                </field>
+            </record>
+        </data>
+</odoo>
+

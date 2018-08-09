@@ -10,12 +10,6 @@ class compagne_liste(models.TransientModel):
     project_id = fields.Many2one('project.project', 'Affaire')
     opportunite_id = fields.Many2one('crm.lead', 'Opportunité')
 
-    @api.model
-    def get_default_statut(self):
-        default_statut = 'sansretour'
-        return default_statut
-
-    statut = fields.Selection(selection=[('sansretour', 'Sans retour'), ('interesse', 'Intéressé'), ('valide', 'Validé')], default=get_default_statut)
 
     @api.multi
     def new_compagne_contact_list(self):
@@ -28,7 +22,6 @@ class compagne_liste(models.TransientModel):
                     'date': self.date,
                     'user_id': self.user_id.id,
                     'project_id': self.project_id.id,
-                    'statut': self.statut,
                     }
 
             compagne_ids = partner.create_compagne_contact_list(partner_ids, vals)

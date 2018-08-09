@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_crm_lead_form_compagne" model="ir.ui.view">
+            <field name="name">view.crm.lead.form.compagne.inherited</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_case_form_view_oppor"/>
+            <field eval="18" name="priority"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form/sheet/group/group[3]/field[@name='user_id']" position="before">
+                    <field name="compagne_id" onchange="@_onchange_partner_id" context="{'partner_id': partner_id}"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

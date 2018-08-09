@@ -465,6 +465,9 @@ class SaleOrder(models.Model):
 
     @api.multi
     def action_cancel(self):
+        opportunite = self.env['crm.lead'].search(
+            [('id', '=', self.opportunity_id.id)])
+        opportunite.stage_id = opportunite._stage_find(domain=[('probability', '=', 10.0), ('on_change', '=', True)])
         return self.write({'state': 'cancel'})
 
     @api.multi
@@ -532,7 +535,9 @@ class SaleOrder(models.Model):
         })
         if self.env.context.get('send_email'):
             self.force_quotation_send()
-
+        opportunite = self.env['crm.lead'].search(
+            [('id', '=', self.opportunity_id.id)])
+        opportunite.stage_id = opportunite._stage_find(domain=[('probability', '=', 100.0), ('on_change', '=', True)])
         # create an analytic account if at least an expense product
         if any([expense_policy != 'no' for expense_policy in self.order_line.mapped('product_id.expense_policy')]):
             if not self.analytic_account_id:

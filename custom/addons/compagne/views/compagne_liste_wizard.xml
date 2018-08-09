@@ -2,17 +2,16 @@
 <odoo>
     <data>
 		<record model="ir.ui.view" id="compagne_liste_wizard">
-			<field name="name">compagne_liste.wizard</field>
+			<field name="name">campagne_liste.wizard</field>
 			<field name="model">compagne.liste</field>
 			<field name="type">form</field>
 			<field name="arch" type="xml">
-				<form string="Informations de la comagne">
+				<form string="Informations de la campagne">
 					<group>
 						<field name="date" string="Date"/>
-                        <field name="name" string="name"/>
+                        <field name="name" string="name" required="True"/>
                         <field name="user_id" string="Responsable"/>
                         <field name="project_id" string="Projet"/>
-                        <field name="statut" string="Statut" invisible="1" default="Sans retour"/>
 						<footer>
 	                    	<button name="new_compagne_contact_list" string="Valider" type="object" class="oe_highlight"/>
 	                    	or
@@ -25,7 +24,7 @@
 
 
 
-        <act_window name="Créer une compagne"
+        <act_window name="Créer une campagne"
             res_model="compagne.liste"
             src_model="res.partner"
             view_mode="form"
